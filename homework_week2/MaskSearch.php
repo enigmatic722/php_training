@@ -6,7 +6,7 @@ require_once(__DIR__.'/../vendor/autoload.php');
 // 開啟CSV檔; "r" 只讀方式打開，將文件指針指向文件頭。;
 $file = fopen('https://data.nhi.gov.tw/Datasets/Download.ashx?rid=A21030000I-D50001-001&l=https://data.nhi.gov.tw/resource/mask/maskdata.csv', 'r');
 
-// 判斷是否為第一筆為(表頭)
+/** @var bool $isHeader 判斷是否為第一筆(表頭) */
 $isHeader = true;
 
 // 讀取CSV內容; 使用支援UTF-8的__fgetcsv函數，解決亂碼問題
@@ -25,7 +25,6 @@ while ($data = __fgetcsv($file)) {
     }
 }
 
-// 關閉文件
 fclose($file);
 
 
